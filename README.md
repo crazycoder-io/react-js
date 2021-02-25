@@ -1,2 +1,2 @@
 # react-js
-Applications made with Vue.js 
+Applications made with React.js 
