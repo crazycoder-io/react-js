@@ -7,11 +7,6 @@ export const menuStyle = {
   transition: "box-shadow 0.5s ease, padding 0.5s ease",
 };
 
-export const overlayStyle = {
-  float: "left",
-  margin: "0em 3em 1em 0em",
-};
-
 export const fixedMenuStyle = {
   backgroundColor: "#fff",
   border: "1px solid #ddd",
