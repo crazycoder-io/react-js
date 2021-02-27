@@ -1,5 +1,5 @@
 # Movie Introduce App React.js
-Movie introduce app powered by React.js connected with Node.js Express service
+Movie introduce app powered by React.js connected with Node.js Express [service](https://github.com/crazycoder-io/node-js-movie-api)
 
 <hr>
 
