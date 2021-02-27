@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Image, List, Segment } from "semantic-ui-react";
 // import PropTypes from "prop-types";
-
-function Footer() {
+const Footer = () => {
   return (
     <Segment
       inverted
@@ -32,7 +31,7 @@ function Footer() {
       </Container>
     </Segment>
   );
-}
+};
 
 Footer.propTypes = {};
 
