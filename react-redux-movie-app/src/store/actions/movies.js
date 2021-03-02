@@ -11,11 +11,7 @@ export const fetchMovies = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_MOVIES });
     axios
-      .get(`${API_URI}/api/movies`, {
-        headers: {
-          "x-access-token": localStorage.getItem("token"),
-        },
-      })
+      .get(`${API_URI}/api/movies`)
       .then(({ data }) => {
         if (data.message) {
           dispatch({
