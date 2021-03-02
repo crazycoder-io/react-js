@@ -5,8 +5,7 @@ import {
   FETCH_MOVIES_FAIL,
   FETCH_MOVIES_SUCCESS,
 } from "../types";
-
-const PRODUCTION = process.env.NODE_ENV === "production" ? true : false;
+import { PRODUCTION } from "../../config/Constants";
 
 export const fetchMovies = () => {
   const { API_URI } = PRODUCTION

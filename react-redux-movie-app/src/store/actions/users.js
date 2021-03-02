@@ -1,7 +1,6 @@
 "use strict";
 import axios from "axios";
-
-const PRODUCTION = process.env.NODE_ENV === "production" ? true : false;
+import { PRODUCTION } from "../../config/Constants";
 
 export const authenticate = () => {
   const { API_URI, API_USER } = PRODUCTION
