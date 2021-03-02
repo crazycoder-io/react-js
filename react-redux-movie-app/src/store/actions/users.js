@@ -1,11 +1,8 @@
 "use strict";
 import axios from "axios";
-import { PRODUCTION } from "../../config/Constants";
+import { API_URI, API_USER } from "../../config/env";
 
 export const authenticate = () => {
-  const { API_URI, API_USER } = PRODUCTION
-    ? require("../../config/env.production")
-    : require("../../config/env");
   return () => {
     axios
       .post(`${API_URI}/authenticate`, API_USER)

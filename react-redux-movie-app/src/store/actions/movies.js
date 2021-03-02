@@ -5,12 +5,9 @@ import {
   FETCH_MOVIES_FAIL,
   FETCH_MOVIES_SUCCESS,
 } from "../types";
-import { PRODUCTION } from "../../config/Constants";
+import { API_URI } from "../../config/env";
 
 export const fetchMovies = () => {
-  const { API_URI } = PRODUCTION
-    ? require("../../config/env.production")
-    : require("../../config/env");
   return (dispatch) => {
     dispatch({ type: FETCH_MOVIES });
     axios
