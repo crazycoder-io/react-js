@@ -5,6 +5,7 @@ import { MoviesList } from "../components";
 import { fetchMovies } from "../store/actions/movies";
 
 const Movies = (props) => {
+  const { error, loading, movies } = props;
   useEffect(() => {
     (() => {
       props.fetchMovies();
@@ -13,10 +14,9 @@ const Movies = (props) => {
 
   return (
     <div>
-      <p>Movies Page</p>
-      {props.loading && <h3>Loading</h3>}
-      {props.error && <h3>{props.error}</h3>}
-      {!props.error && props.movies && <MoviesList movies={props.movies} />}
+      {loading && <h3>Loading</h3>}
+      {error && <h3>{error}</h3>}
+      {!error && !loading && movies && <MoviesList movies={movies} />}
     </div>
   );
 };
