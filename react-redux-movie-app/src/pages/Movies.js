@@ -14,18 +14,24 @@ const Movies = (props) => {
   return (
     <div>
       <p>Movies Page</p>
-      <MoviesList movies={props.movies} />
+      {props.loading && <h3>Loading</h3>}
+      {props.error && <h3>{props.error}</h3>}
+      {!props.error && props.movies && <MoviesList movies={props.movies} />}
     </div>
   );
 };
 
 Movies.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.shape({ type: PropTypes.array }).isRequired,
   fetchMovies: PropTypes.func.isRequired,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
+const mapStateToProps = ({ movies }) => ({
+  movies: movies.movies,
+  error: movies.error,
+  loading: movies.loading,
 });
 
 const mapDispatchToProps = {
