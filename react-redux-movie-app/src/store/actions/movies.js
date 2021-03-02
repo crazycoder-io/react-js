@@ -6,15 +6,16 @@ import {
   FETCH_MOVIES_SUCCESS,
 } from "../types";
 
-import { API_URI } from "../../config/env";
-import { API_URI as api_uri } from "../../config/env.production";
 const PRODUCTION = process.env.NODE_ENV === "production" ? true : false;
 
 export const fetchMovies = () => {
+  const { API_URI } = PRODUCTION
+    ? require("../../config/env.production")
+    : require("../../config/env");
   return (dispatch) => {
     dispatch({ type: FETCH_MOVIES });
     axios
-      .get(`${PRODUCTION ? api_uri : API_URI}/api/movies`)
+      .get(`${API_URI}/api/movies`)
       .then(({ data }) => {
         if (data.message) {
           dispatch({
