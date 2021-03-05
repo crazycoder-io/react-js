@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { PacmanLoader } from "react-spinners";
 import { MoviesList } from "../components";
 import { fetchMovies } from "../store/actions/movies";
+import "../styles/movies.css";
 
 const Movies = (props) => {
   const { error, loading, movies } = props;
@@ -14,7 +16,11 @@ const Movies = (props) => {
 
   return (
     <div>
-      {loading && <h3>Loading</h3>}
+      {loading && (
+        <div className="loading-container">
+          <PacmanLoader loading={true} />
+        </div>
+      )}
       {error && <h3>{error}</h3>}
       {!error && !loading && movies && <MoviesList movies={movies} />}
     </div>
