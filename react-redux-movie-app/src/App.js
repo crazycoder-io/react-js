@@ -6,7 +6,7 @@ import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { Footer, Header } from "./components";
 import { authenticate } from "./store/actions/users";
-import { Movies } from "./pages";
+import { Movies, AddMovie } from "./pages";
 import "./App.css";
 
 function App(props) {
@@ -22,7 +22,7 @@ function App(props) {
       <Header />
       <Container text>
         <Route path="/movies" component={Movies}></Route>
-        <hr />
+        <Route path="/movie/new" component={AddMovie}></Route>
       </Container>
       <Footer />
     </div>

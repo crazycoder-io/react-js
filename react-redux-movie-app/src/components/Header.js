@@ -30,7 +30,9 @@ const Header = () => {
           <Menu.Item as={NavLink} to="/movies">
             Movies
           </Menu.Item>
-          <Menu.Item as="a">Add New</Menu.Item>
+          <Menu.Item as={NavLink} to="/movie/new">
+            Add New
+          </Menu.Item>
         </Container>
       </Menu>
     </Visibility>
