@@ -2,19 +2,44 @@ import React from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
 
 function NewMovieForm() {
+  const [form, setForm] = React.useState({
+    title: "",
+    director_id: "",
+    photo: "",
+    category: "",
+    country: "",
+    year: "",
+    imdb_score: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
   return (
     <Form>
       <Grid columns={2}>
         <Grid.Column>
           <Form.Field>
             <label>Movie Title</label>
-            <input placeholder="Title" />
+            <input
+              id="title"
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              placeholder="Title"
+            />
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
           <Form.Field>
             <label>Director ID</label>
-            <input placeholder="Director ID" />
+            <input
+              id="director_id"
+              name="director_id"
+              value={form.director_id}
+              onChange={handleChange}
+              placeholder="Director ID"
+            />
           </Form.Field>
         </Grid.Column>
       </Grid>
@@ -22,13 +47,25 @@ function NewMovieForm() {
         <Grid.Column>
           <Form.Field>
             <label>Photo URL</label>
-            <input placeholder="Photo URL" />
+            <input
+              id="photo"
+              name="photo"
+              value={form.photo}
+              onChange={handleChange}
+              placeholder="Photo URL"
+            />
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
           <Form.Field>
             <label>Category</label>
-            <input placeholder="Category" />
+            <input
+              id="category"
+              name="category"
+              value={form.category}
+              onChange={handleChange}
+              placeholder="Category"
+            />
           </Form.Field>
         </Grid.Column>
       </Grid>
@@ -36,19 +73,37 @@ function NewMovieForm() {
         <Grid.Column>
           <Form.Field>
             <label>Country</label>
-            <input placeholder="Country" />
+            <input
+              id="country"
+              name="country"
+              value={form.country}
+              onChange={handleChange}
+              placeholder="Country"
+            />
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
           <Form.Field>
             <label>Year</label>
-            <input placeholder="Year" />
+            <input
+              id="year"
+              name="year"
+              value={form.year}
+              onChange={handleChange}
+              placeholder="Year"
+            />
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
           <Form.Field>
             <label>IMDB Score</label>
-            <input placeholder="IMDB Score" />
+            <input
+              id="imdb_score"
+              name="imdb_score"
+              value={form.imdb_score}
+              onChange={handleChange}
+              placeholder="IMDB Score"
+            />
           </Form.Field>
         </Grid.Column>
       </Grid>
