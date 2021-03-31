@@ -58,12 +58,21 @@ const App = () => {
         }
     };
 
-    const nextQuestion = () => {};
+    const nextQuestion = () => {
+        // Move to the next question if it's not the last one
+        const nextQuestion = number + 1;
+        
+        if (nextQuestion === TOTAL_QUESTIONS){
+            setGameOver(true);
+        } else {
+            setNumber(nextQuestion);
+        }
+    };
 
     return (
         <div>
             <h1>React Quiz App</h1>
-            {userAnswers.length === TOTAL_QUESTIONS || gameOver && (
+            {(userAnswers.length === TOTAL_QUESTIONS || gameOver) && (
                 <button className="start" onClick={startTrivia}>Start</button>
             )}
             {!gameOver && <p className="score">Score: </p>}
