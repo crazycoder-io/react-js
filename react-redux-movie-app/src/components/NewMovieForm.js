@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
+import { InlineError } from "../components";
 
 function NewMovieForm() {
   const [form, setForm] = React.useState({
@@ -11,15 +12,33 @@ function NewMovieForm() {
     year: "",
     imdb_score: "",
   });
+  const [errors, setError] = React.useState(false);
+
+  const validate = () => {
+    for (const key in form) {
+      if (!form[key] || form[key] === "") {
+        setError((prev) => ({
+          ...prev,
+          [key]: `${key} cannot be blank!`,
+        }));
+      }
+    }
+    return errors;
+  };
+
+  const onSubmit = () => {
+    const error = validate();
+    console.log(error);
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <Grid columns={2}>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.title}>
             <label>Movie Title</label>
             <input
               id="title"
@@ -28,10 +47,11 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="Title"
             />
+            {errors && errors.title && <InlineError errorText={errors.title} />}
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.director_id}>
             <label>Director ID</label>
             <input
               id="director_id"
@@ -40,12 +60,15 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="Director ID"
             />
+            {errors && errors.director_id && (
+              <InlineError errorText={errors.director_id} />
+            )}
           </Form.Field>
         </Grid.Column>
       </Grid>
       <Grid columns={2}>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.photo}>
             <label>Photo URL</label>
             <input
               id="photo"
@@ -54,10 +77,11 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="Photo URL"
             />
+            {errors && errors.photo && <InlineError errorText={errors.photo} />}
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.category}>
             <label>Category</label>
             <input
               id="category"
@@ -66,12 +90,15 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="Category"
             />
+            {errors && errors.category && (
+              <InlineError errorText={errors.category} />
+            )}
           </Form.Field>
         </Grid.Column>
       </Grid>
       <Grid columns={3}>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.country}>
             <label>Country</label>
             <input
               id="country"
@@ -80,10 +107,13 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="Country"
             />
+            {errors && errors.country && (
+              <InlineError errorText={errors.country} />
+            )}
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.year}>
             <label>Year</label>
             <input
               id="year"
@@ -92,10 +122,11 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="Year"
             />
+            {errors && errors.year && <InlineError errorText={errors.year} />}
           </Form.Field>
         </Grid.Column>
         <Grid.Column>
-          <Form.Field>
+          <Form.Field error={errors && errors.imdb_score}>
             <label>IMDB Score</label>
             <input
               id="imdb_score"
@@ -104,6 +135,9 @@ function NewMovieForm() {
               onChange={handleChange}
               placeholder="IMDB Score"
             />
+            {errors && errors.imdb_score && (
+              <InlineError errorText={errors.imdb_score} />
+            )}
           </Form.Field>
         </Grid.Column>
       </Grid>
