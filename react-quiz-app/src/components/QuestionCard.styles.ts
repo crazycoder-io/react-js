@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { withProps } from '../utils/withProps'
  
 export const Wrapper = styled.div`
     max-width: 1100px;
