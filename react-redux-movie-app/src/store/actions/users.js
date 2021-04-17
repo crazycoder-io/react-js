@@ -5,7 +5,7 @@ import { API_URI } from "../../config/env";
 export const authenticate = () => {
   return () => {
     axios
-      .post(`${API_URI}/register`, {
+      .post(`${API_URI}/authenticate`, {
         userName: process.env.REACT_APP_USERNAME,
         password: process.env.REACT_APP_PASSWORD,
       })
