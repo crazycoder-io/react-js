@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Form, Grid } from "semantic-ui-react";
+import { Button, Form, Grid, Message } from "semantic-ui-react";
 import { InlineError } from "../components";
 
 function NewMovieForm(props) {
@@ -149,6 +149,16 @@ function NewMovieForm(props) {
           <Button type="submit">Submit</Button>
         </Grid.Column>
       </Grid>
+      {props.error && (
+        <Grid columns={1}>
+          <Grid.Column>
+            <Message negative>
+              <Message.Header>Error!</Message.Header>
+              <p>{props.error}</p>
+            </Message>
+          </Grid.Column>
+        </Grid>
+      )}
     </Form>
   );
 }
@@ -156,6 +166,7 @@ function NewMovieForm(props) {
 NewMovieForm.propTypes = {
   loading: PropTypes.bool,
   newMovieSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 export default NewMovieForm;

@@ -11,6 +11,7 @@ function NewMovie(props) {
       <MovieForm
         newMovieSubmit={props.newMovieSubmit}
         loading={props.loading}
+        error={props.error}
       />
     </div>
   );
