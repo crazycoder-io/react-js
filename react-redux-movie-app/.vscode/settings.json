@@ -6,5 +6,12 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "vue": "vue-html"
-  }
+  },
+  "material-icon-theme.activeIconPack": "react_redux",
+  "material-icon-theme.files.associations": {
+    "*.ts": "typescript",
+    "*.js": "react",
+    "**.json": "json",
+  },
+  "material-icon-theme.folders.theme": "classic",
 }
