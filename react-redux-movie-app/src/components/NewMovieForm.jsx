@@ -30,7 +30,7 @@ function NewMovieForm(props) {
 
   const onSubmit = () => {
     const error = validate();
-    if (Object.keys(error).length === 0) {
+    if (typeof error === "object" && Object.keys(error).length === 0) {
       props.newMovieSubmit(form);
     }
   };
