@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   movie: {},
   error: null,
   loading: false,
+  status: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         movie: action.payload,
+        status: true,
       };
     case ADD_MOVIE_FAIL:
       return {

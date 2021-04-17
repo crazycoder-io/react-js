@@ -12,6 +12,7 @@ function NewMovie(props) {
         newMovieSubmit={props.newMovieSubmit}
         loading={props.loading}
         error={props.error}
+        status={props.status}
       />
     </div>
   );
@@ -21,6 +22,7 @@ NewMovie.propTypes = {
   movie: PropTypes.object,
   error: PropTypes.object,
   loading: PropTypes.bool,
+  status: PropTypes.bool,
   newMovieSubmit: PropTypes.func.isRequired,
 };
 
@@ -28,6 +30,7 @@ const mapStateToProps = ({ newMovie }) => ({
   movie: newMovie.movie,
   error: newMovie.error,
   loading: newMovie.loading,
+  status: newMovie.status,
 });
 
 const mapDispatchToProps = { newMovieSubmit };
