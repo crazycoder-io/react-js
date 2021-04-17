@@ -37,6 +37,9 @@ function NewMovieForm(props) {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (errors[e.target.name]) {
+      setError((prev) => ({ ...prev, [e.target.name]: null }));
+    }
   };
   return (
     <div>
