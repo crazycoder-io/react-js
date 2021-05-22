@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   movies: [],
   error: null,
   loading: false,
+  movie: null,
 };
 
 export default (state = INITIAL_STATE, action) => {

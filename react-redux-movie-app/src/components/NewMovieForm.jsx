@@ -6,15 +6,31 @@ import { InlineError } from "../components";
 
 function NewMovieForm(props) {
   const [form, setForm] = React.useState({
-    title: "",
-    director_id: "",
-    photo: "",
-    category: "",
-    country: "",
-    year: "",
-    imdb_score: "",
+    title: props.editMovie ? props.editMovie.title : "",
+    director_id: props.editMovie ? props.editMovie.director_id : "",
+    photo: props.editMovie ? props.editMovie.photo : "",
+    category: props.editMovie ? props.editMovie.category : "",
+    country: props.editMovie ? props.editMovie.country : "",
+    year: props.editMovie ? props.editMovie.year : "",
+    imdb_score: props.editMovie ? props.editMovie.imdb_score : "",
   });
   const [errors, setError] = React.useState(false);
+  const [movie_id, setMovieID] = React.useState(props.editMovie._id);
+
+  React.useEffect(() => {
+    (() => {
+      setForm({
+        title: props.editMovie.title,
+        director_id: props.editMovie.director_id,
+        photo: props.editMovie.photo,
+        category: props.editMovie.category,
+        country: props.editMovie.country,
+        year: props.editMovie.year,
+        imdb_score: props.editMovie.imdb_score,
+      });
+      setMovieID(props.editMovie._id);
+    })();
+  }, [props.editMovie]);
 
   const validate = () => {
     for (const key in form) {
@@ -30,8 +46,15 @@ function NewMovieForm(props) {
 
   const onSubmit = () => {
     const error = validate();
-    if (typeof error === "object" && Object.keys(error).length === 0) {
-      props.newMovieSubmit(form);
+    if (
+      !error ||
+      (typeof error === "object" && Object.keys(error).length === 0)
+    ) {
+      if (!movie_id) {
+        props.newMovieSubmit(form);
+      } else {
+        props.editMovieSubmit(movie_id, form);
+      }
     }
   };
 
@@ -168,7 +191,7 @@ function NewMovieForm(props) {
               <Grid.Column>
                 <Message negative>
                   <Message.Header>Error!</Message.Header>
-                  <p>{props.error}</p>
+                  <p>{props.error.message}</p>
                 </Message>
               </Grid.Column>
             </Grid>
@@ -184,6 +207,8 @@ NewMovieForm.propTypes = {
   newMovieSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
   status: PropTypes.bool,
+  editMovie: PropTypes.object,
+  editMovieSubmit: PropTypes.func,
 };
 
 export default NewMovieForm;
