@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const extra = (movie) => (
   <div className="ui two buttons">
-    <Button animated as={Link} to={`/movie/${movie._id}`}>
+    <Button animated as={Link} to={`/movie/edit/${movie._id}`}>
       <Button.Content visible>Edit</Button.Content>
       <Button.Content hidden>
         <Icon name="edit" />

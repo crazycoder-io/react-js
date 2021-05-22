@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
@@ -17,13 +17,17 @@ function App(props) {
       }
     })();
   }, []);
+
+  const location = useLocation();
+  const current_path = location.pathname;
   return (
     <div className="App">
       <Header />
+      {current_path === "/" && <div className="app" />}
       <Container text>
         <Route path="/movies" component={Movies}></Route>
         <Route path="/movie/new" component={AddMovie}></Route>
-        <Route path="/movie/:id" component={AddMovie}></Route>
+        <Route path="/movie/edit/:id" component={AddMovie}></Route>
       </Container>
       <Footer />
     </div>
