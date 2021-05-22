@@ -23,6 +23,7 @@ function App(props) {
       <Container text>
         <Route path="/movies" component={Movies}></Route>
         <Route path="/movie/new" component={AddMovie}></Route>
+        <Route path="/movie/:id" component={AddMovie}></Route>
       </Container>
       <Footer />
     </div>
