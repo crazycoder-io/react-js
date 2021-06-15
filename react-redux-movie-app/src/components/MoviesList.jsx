@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { Grid } from "semantic-ui-react";
 import { MovieCard } from "../components";
 
-function MoviesList({ movies }) {
+function MoviesList({ movies, deleteMovie }) {
   const emptyMessage = <p>There are no movies yet</p>;
 
   const moviesList = (
     <Grid stackable columns={3}>
       {movies.map((movie) => (
-        <MovieCard key={movie._id} movie={movie} />
+        <MovieCard key={movie._id} movie={movie} deleteMovie={deleteMovie} />
       ))}
     </Grid>
   );
@@ -19,6 +19,7 @@ function MoviesList({ movies }) {
 
 MoviesList.propTypes = {
   movies: PropTypes.array.isRequired,
+  deleteMovie: PropTypes.func.isRequired,
 };
 
 export default MoviesList;

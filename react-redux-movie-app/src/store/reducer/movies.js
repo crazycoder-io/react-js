@@ -3,6 +3,9 @@ import {
   FETCH_MOVIES,
   FETCH_MOVIES_FAIL,
   FETCH_MOVIES_SUCCESS,
+  DELETE_MOVIE,
+  DELETE_MOVIE_FAIL,
+  DELETE_MOVIE_SUCCESS,
 } from "../types";
 
 const INITIAL_STATE = {
@@ -26,6 +29,23 @@ export default (state = INITIAL_STATE, action) => {
         movies: action.payload,
       };
     case FETCH_MOVIES_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case DELETE_MOVIE:
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        movies: state.movies.filter((movie) => movie._id != action.payload),
+      };
+    case DELETE_MOVIE_FAIL:
       return {
         ...state,
         loading: false,
